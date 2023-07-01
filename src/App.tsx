@@ -1,26 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import ContributionGraph from './components/ContributionGraph/ContributionGraph';
+import { getListContributions } from './commons/get-contributions';
 
 function App() {
+  const [contributionData, setContributionData] = useState<{ date: string; score: number; }[]>([]);
+  useEffect(() => {
+    loadContributionDataAsync();
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ContributionGraph data={contributionData} />
   );
+
+  async function loadContributionDataAsync() {
+    const data = await getListContributions();
+
+    if (data) {
+      setContributionData(data.convertedData);
+    }
+  }
 }
 
 export default App;
