@@ -4,6 +4,7 @@ import ContributionGraphHead from './components/ContributionGraphHead/Contributi
 import ContributionGraphBody from './components/ContributionGraphBody/ContributionGraphBody';
 
 import './ContributionGraph.scss';
+import { getSortedMonthes, getSortedWeekDays } from '../../commons/sortings';
 
 interface IContributionGraph {
     data: {
@@ -18,49 +19,17 @@ function ContributionGraph({ data }: IContributionGraph) {
     const [sortedWeekdays, setSortedWeekdays] = useState<number[]>([]);
 
     useEffect(() => {
-        sortMonthes();
+        setSortedMonthes(getSortedMonthes(currentDate));
     }, []);
 
     useEffect(() => {
-        sortWeekdays();
+        setSortedWeekdays(getSortedWeekDays(currentDate));
     }, []);
 
     const getMinDate = (num?: number) => {
         const fiftyWeeksAgo = new Date(currentDate);
         fiftyWeeksAgo.setDate(fiftyWeeksAgo.getDate() - (49 * 7) + 3 + (num || 0));
         return fiftyWeeksAgo;
-    }
-
-    const sortWeekdays = () => {
-        const currentDay = currentDate.getDay();
-        
-        const days = [];
-
-        for (let day = currentDay; day < 7; day++) {
-            days.push(day);
-        }
-
-        for (let day = 0; day < currentDay; day++) {
-            days.push(day);
-        }
-
-        console.log(days);
-        setSortedWeekdays(days);
-    }
-
-    const sortMonthes = () => {
-        const currentMonth = currentDate.getMonth() + 1;
-
-        const monthes = [];
-        for (let month = currentMonth + 1; month <= 12; month++) {
-            monthes.push(month);
-        }
-
-        for (let month = 1; month <= currentMonth; month++) {
-            monthes.push(month);
-        }
-
-        setSortedMonthes(monthes);
     }
 
     return (
