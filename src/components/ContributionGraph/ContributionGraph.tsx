@@ -25,9 +25,9 @@ function ContributionGraph({ data }: IContributionGraph) {
         sortWeekdays();
     }, []);
 
-    const getMinDate = () => {
+    const getMinDate = (num?: number) => {
         const fiftyWeeksAgo = new Date(currentDate);
-        fiftyWeeksAgo.setDate(fiftyWeeksAgo.getDate() - (49 * 7) + 3);
+        fiftyWeeksAgo.setDate(fiftyWeeksAgo.getDate() - (49 * 7) + 3 + (num || 0));
         return fiftyWeeksAgo;
     }
 
@@ -67,7 +67,7 @@ function ContributionGraph({ data }: IContributionGraph) {
         <div className='contribution-graph'>
             <table>
                 <ContributionGraphHead sortedMonthes={sortedMonthes} />
-                <ContributionGraphBody sortedWeekdays={sortedWeekdays} data={data} currentDate={currentDate} minDate={() => getMinDate()}/>
+                <ContributionGraphBody sortedWeekdays={sortedWeekdays} data={data} currentDate={currentDate} minDate={(num?: number) => getMinDate(num)}/>
             </table>
             <div className='contribution-graph-legend'>
                 <span>Меньше</span>

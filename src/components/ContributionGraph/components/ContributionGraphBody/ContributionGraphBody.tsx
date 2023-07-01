@@ -9,11 +9,11 @@ interface IContributionGraphBody {
         score: number,
     }[],
     currentDate: Date,
-    minDate: () => Date,
+    minDate: (num?: number) => Date,
 }
 
 function ContributionGraphBody({ sortedWeekdays, data, currentDate, minDate }: IContributionGraphBody) {
-    const onGetDatesByWeekday = (weekDay: number) => {
+    const onGetDatesByWeekday = (weekDay: number, num: number) => {
 
         const compareDates = (firstDate: Date, secondDate: Date) => {
             if(firstDate.getFullYear() != secondDate.getFullYear()
@@ -28,7 +28,7 @@ function ContributionGraphBody({ sortedWeekdays, data, currentDate, minDate }: I
 
         const currentDates = data.filter((el) => el.date.getDay() === weekDay);
 
-        const startDate = minDate();
+        const startDate = minDate(num);
         const endDate = currentDate;
 
         const dates = [];
@@ -61,7 +61,7 @@ function ContributionGraphBody({ sortedWeekdays, data, currentDate, minDate }: I
                     <td>
                         {WeekDaysEnum[weekDay]}
                     </td>
-                    {onGetDatesByWeekday(weekDay).map((el, index2) =>
+                    {onGetDatesByWeekday(weekDay, index).map((el, index2) =>
                         <td key={`td-body-index-${index}-${index2}`}>
                             <ContributionGraphElement data={el} />
                         </td>
