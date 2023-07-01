@@ -59,12 +59,6 @@ function ContributionGraphElement({ data, children }: IContributionGraphElement)
             <button ref={elementRef} onClick={handleClick}></button>
             {isShowInfo &&
                 <div className="contribution-graph-element__info">
-                    {/* <div className="contribution-graph-element__contributions">
-                        <span>{`${data.score} contributions`}</span>
-                    </div>
-                    <div className="contribution-graph-element__date">
-                        {`${convertDate(data.date)}`}                        
-                    </div> */}
                     {children}
                 </div>
             }
