@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { WeekDaysEnum } from "../../ContributionGraph";
 import ContributionGraphElement from "../ContributionGraphElement/ContributionGraphElement";
+import { WeekDaysEnum } from "../../../../commons/convert-date";
 
 interface IContributionGraphBody {
     sortedWeekdays: number[],
@@ -26,7 +26,7 @@ function ContributionGraphBody({ sortedWeekdays, data, currentDate, minDate }: I
             || firstDate.getDate() != secondDate.getDate()){
                 return false;
             }
-            
+
             return true;
         }
 
@@ -44,7 +44,7 @@ function ContributionGraphBody({ sortedWeekdays, data, currentDate, minDate }: I
 
                 if(!tem){
                     const emptyDate: { date: Date; score: number;} = {
-                        date: date,
+                        date: new Date(date),
                         score: 0
                     }
                     dates.push(emptyDate);
@@ -66,9 +66,8 @@ function ContributionGraphBody({ sortedWeekdays, data, currentDate, minDate }: I
                     <td>
                         {WeekDaysEnum[el]}
                     </td>
-                    {onGetDatesByWeekday(el).map((el, index) =>
-                        <td key={`td-body-index-${index}`}>
-                            {/* {`${el.date.getDate()}-${el.date.getMonth()}-${el.date.getFullYear()}`} */}
+                    {onGetDatesByWeekday(el).map((el, index2) =>
+                        <td key={`td-body-index-${index}-${index2}`}>
                             <ContributionGraphElement data={el} />
                         </td>
                     )}

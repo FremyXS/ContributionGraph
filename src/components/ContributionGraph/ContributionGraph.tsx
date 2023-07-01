@@ -11,29 +11,7 @@ interface IContributionGraph {
     }[]
 }
 
-export enum MonthesEnum {
-    "Янв." = 1,
-    "Февр.",
-    "Март",
-    "Апр.",
-    "Май",
-    "Июнь",
-    "Июль",
-    "Авг.",
-    "Сент.",
-    "Окт.",
-    "Нояб.",
-    "Дек.",
-}
-export enum WeekDaysEnum {
-    'Пн' = 1,
-    'Вт',
-    'Ср',
-    'Чт',
-    'Пт',
-    'Суб',
-    'Вос',
-}
+
 
 function ContributionGraph({ data }: IContributionGraph) {
     const currentDate = new Date();

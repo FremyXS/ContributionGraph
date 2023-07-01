@@ -1,24 +1,77 @@
 .contribution-graph-element {
-    width: 20px;
-    height: 20px;
-    background-color: #aeaeae;
-    margin: 1px;
+    position: relative;
 
-    &:hover, &:active{
-        margin: 0;
-        border: 1px solid black;
+    button {
+        width: 20px;
+        height: 20px;
+        background-color: #aeaeae;
+        margin: 1px;
+        outline: none;
+        border: none;
+    }
+
+    &:hover,
+    &:active {
+        button {
+            margin: 0;
+            border: 1px solid black;
+        }
     }
 
     &.two {
-        background-color: #ACD5F2;
+        button {
+
+            background-color: #ACD5F2;
+        }
     }
+
     &.three {
-        background-color: #7FA8C9;
+        button {
+
+            background-color: #7FA8C9;
+        }
     }
+
     &.foure {
-        background-color: #527BA0;
+        button {
+
+            background-color: #527BA0;
+        }
     }
+
     &.five {
-        background-color: #254E77;
+        button {
+
+            background-color: #254E77;
+        }
+    }
+
+    &__info {
+        position: absolute;
+        bottom: 30px;
+        right: calc(50% - 50px);
+
+        color: #fff;
+        background-color: black;
+        border-radius: 3px;
+        padding: 5px 9px 6px;
+
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__contributions {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 14.52px;
+    }
+
+    &__date {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 12.1px;
+        color: #7C7C7C;
     }
 }
