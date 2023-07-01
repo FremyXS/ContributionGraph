@@ -1,20 +1,31 @@
 import React, { useEffect, useState } from "react";
 import { MonthesEnum } from "../../../../commons/convert-date";
 
-interface IContributionGraphHead{
+interface IContributionGraphHead {
     sortedMonthes: number[]
 }
 
 
-function ContributionGraphHead({sortedMonthes}: IContributionGraphHead) {
+function ContributionGraphHead({ sortedMonthes }: IContributionGraphHead) {
+
+    const getColumnSpan = (monthNum: number) => {
+        if (monthNum === MonthesEnum.Июль
+            || monthNum === MonthesEnum.Окт
+            || monthNum === MonthesEnum.Янв
+            || monthNum === MonthesEnum.Апр){
+                return 5;
+        }
+
+        return 4;
+    }
 
     return (
         <thead>
             <tr>
                 <td>Дни недели</td>
-                {sortedMonthes.map((el, index) => 
+                {sortedMonthes.map((el, index) =>
                     <td key={`td-monthes-${index}`}
-                    colSpan={5}
+                        colSpan={getColumnSpan(el)}
                     >{MonthesEnum[el]}</td>
                 )}
             </tr>
