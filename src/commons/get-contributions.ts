@@ -5,7 +5,7 @@ export const getListContributions = async () => {
         const { data } = await axios.get('https://dpg.gg/test/calendar.json');
 
         const convertedData = Object.entries(data).map(([date, score]) => ({
-            date,
+            date: new Date(date),
             score: score as number,
         }));
         console.log(convertedData);

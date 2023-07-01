@@ -5,7 +5,7 @@ import ContributionGraph from './components/ContributionGraph/ContributionGraph'
 import { getListContributions } from './commons/get-contributions';
 
 function App() {
-  const [contributionData, setContributionData] = useState<{ date: string; score: number; }[]>([]);
+  const [contributionData, setContributionData] = useState<{ date: Date; score: number; }[]>([]);
   useEffect(() => {
     loadContributionDataAsync();
   }, [])

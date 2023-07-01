@@ -1,0 +1,22 @@
+.contribution-graph-element {
+    width: 20px;
+    height: 20px;
+    background-color: #aeaeae;
+
+    &:hover, &:active{
+        border: 1px solid black;
+    }
+
+    &.two {
+        background-color: #ACD5F2;
+    }
+    &.three {
+        background-color: #7FA8C9;
+    }
+    &.foure {
+        background-color: #527BA0;
+    }
+    &.five {
+        background-color: #254E77;
+    }
+}
