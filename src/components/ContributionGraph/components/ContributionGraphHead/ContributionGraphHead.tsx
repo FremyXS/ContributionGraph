@@ -22,7 +22,9 @@ function ContributionGraphHead({ sortedMonthes }: IContributionGraphHead) {
     return (
         <thead>
             <tr>
-                <td>Дни недели</td>
+                <td>
+                    <span style={{display:"none"}}>Дни недели</span>
+                </td>
                 {sortedMonthes.map((el, index) =>
                     <td key={`td-monthes-${index}`}
                         colSpan={getColumnSpan(el)}
