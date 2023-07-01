@@ -10,13 +10,18 @@
     }
 
     &-legend{
+        margin-left: 20px;
         display: flex;
         column-gap: 5px;
         margin-top: 15px;
 
+        span {
+            font-size: 10px;
+        }
+        
         & >section {
-            width: 20px;
-            height: 20px;
+            width: 15px;
+            height: 15px;
 
             &:nth-child(2){
                 background-color: #aeaeae;
