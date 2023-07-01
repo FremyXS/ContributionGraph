@@ -66,7 +66,7 @@ function ContributionGraphElement({ data }: IContributionGraphElement) {
             {isShowInfo &&
                 <div className="contribution-graph-element__info">
                     <div className="contribution-graph-element__contributions">
-                        {`${data.score} contributions`}
+                        <span>{`${data.score} contributions`}</span>
                     </div>
                     <div className="contribution-graph-element__date">
                         {`${convertDate(data.date)}`}

@@ -13,11 +13,6 @@ interface IContributionGraphBody {
 }
 
 function ContributionGraphBody({ sortedWeekdays, data, currentDate, minDate }: IContributionGraphBody) {
-
-    console.log(currentDate.getDate(), currentDate.getMonth(),currentDate.getFullYear());
-    console.log(minDate().getDate(), minDate().getMonth(),minDate().getFullYear());
-
-
     const onGetDatesByWeekday = (weekDay: number) => {
 
         const compareDates = (firstDate: Date, secondDate: Date) => {
@@ -30,6 +25,7 @@ function ContributionGraphBody({ sortedWeekdays, data, currentDate, minDate }: I
             return true;
         }
 
+
         const currentDates = data.filter((el) => el.date.getDay() === weekDay);
 
         const startDate = minDate();
@@ -38,10 +34,9 @@ function ContributionGraphBody({ sortedWeekdays, data, currentDate, minDate }: I
         const dates = [];
 
         for (let date = startDate!; date <= endDate; date.setDate(date.getDate() + 1)) {
+            const tem = currentDates.find((el) => compareDates(el.date, date));
+
             if (date.getDay() === weekDay) {
-
-                const tem = currentDates.find((el) => compareDates(el.date, date));
-
                 if(!tem){
                     const emptyDate: { date: Date; score: number;} = {
                         date: new Date(date),
@@ -60,13 +55,12 @@ function ContributionGraphBody({ sortedWeekdays, data, currentDate, minDate }: I
 
     return (
         <tbody>
-            {sortedWeekdays.map((el, index) =>
-                <tr>
-
+            {sortedWeekdays.map((weekDay, index) =>
+                <tr key={`tr-body-index-${index}`}>
                     <td>
-                        {WeekDaysEnum[el]}
+                        {WeekDaysEnum[weekDay]}
                     </td>
-                    {onGetDatesByWeekday(el).map((el, index2) =>
+                    {onGetDatesByWeekday(weekDay).map((el, index2) =>
                         <td key={`td-body-index-${index}-${index2}`}>
                             <ContributionGraphElement data={el} />
                         </td>

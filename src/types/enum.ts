@@ -13,7 +13,7 @@ enum MonthesEnum {
     "Дек",
 }
 enum WeekDaysEnum {
-    'Пн' = 1,
+    'Пн',
     'Вт',
     'Ср',
     'Чт',

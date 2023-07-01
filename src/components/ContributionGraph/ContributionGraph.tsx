@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
-import './ContributionGraph.scss';
 import ContributionGraphHead from './components/ContributionGraphHead/ContributionGraphHead';
 import ContributionGraphBody from './components/ContributionGraphBody/ContributionGraphBody';
+
+import './ContributionGraph.scss';
 
 interface IContributionGraph {
     data: {
@@ -10,8 +11,6 @@ interface IContributionGraph {
         score: number,
     }[]
 }
-
-
 
 function ContributionGraph({ data }: IContributionGraph) {
     const currentDate = new Date();
@@ -34,17 +33,18 @@ function ContributionGraph({ data }: IContributionGraph) {
 
     const sortWeekdays = () => {
         const currentDay = currentDate.getDay();
-
+        
         const days = [];
 
-        for (let day = currentDay + 1; day <= 7; day++) {
+        for (let day = currentDay; day < 7; day++) {
             days.push(day);
         }
 
-        for (let day = 1; day <= currentDay; day++) {
+        for (let day = 0; day < currentDay; day++) {
             days.push(day);
         }
 
+        console.log(days);
         setSortedWeekdays(days);
     }
 
