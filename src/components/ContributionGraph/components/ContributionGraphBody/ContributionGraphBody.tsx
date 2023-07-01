@@ -16,9 +16,9 @@ function ContributionGraphBody({ sortedWeekdays, data, currentDate, minDate }: I
     const onGetDatesByWeekday = (weekDay: number, num: number) => {
 
         const compareDates = (firstDate: Date, secondDate: Date) => {
-            if(firstDate.getFullYear() != secondDate.getFullYear()
-            || firstDate.getMonth() != secondDate.getMonth()
-            || firstDate.getDate() != secondDate.getDate()){
+            if (firstDate.getFullYear() != secondDate.getFullYear()
+                || firstDate.getMonth() != secondDate.getMonth()
+                || firstDate.getDate() != secondDate.getDate()) {
                 return false;
             }
 
@@ -37,16 +37,16 @@ function ContributionGraphBody({ sortedWeekdays, data, currentDate, minDate }: I
             const tem = currentDates.find((el) => compareDates(el.date, date));
 
             if (date.getDay() === weekDay) {
-                if(!tem){
-                    const emptyDate: { date: Date; score: number;} = {
+                if (!tem) {
+                    const emptyDate: { date: Date; score: number; } = {
                         date: new Date(date),
                         score: 0
                     }
                     dates.push(emptyDate);
                 }
-                else{
+                else {
                     dates.push(tem);
-                    
+
                 }
             }
         }
@@ -59,7 +59,9 @@ function ContributionGraphBody({ sortedWeekdays, data, currentDate, minDate }: I
             {sortedWeekdays.map((weekDay, index) =>
                 <tr key={`tr-body-index-${index}`}>
                     <td>
-                        {WeekDaysEnum[weekDay]}
+                        <span style={{display: [0, 2, 4].includes(weekDay)? 'inline': 'none'}}>
+                            {WeekDaysEnum[weekDay]}
+                        </span>
                     </td>
                     {onGetDatesByWeekday(weekDay, index).map((el, index2) =>
                         <td key={`td-body-index-${index}-${index2}`}>

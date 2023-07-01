@@ -1,5 +1,7 @@
 .contribution-graph-element {
     position: relative;
+    width: 15px;
+    height: 15px;
 
     button {
         width: 15px;
@@ -55,7 +57,6 @@
         background-color: black;
         border-radius: 3px;
         padding: 5px 9px 6px;
-
 
         display: flex;
         flex-direction: column;
