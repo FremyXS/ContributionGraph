@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ContributionGraphElement from "../ContributionGraphElement/ContributionGraphElement";
-import { WeekDaysEnum } from "../../../../commons/convert-date";
+import { WeekDaysEnum } from "../../../../types/enum";
 
 interface IContributionGraphBody {
     sortedWeekdays: number[],

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { MonthesEnum } from "../../../../commons/convert-date";
+import { MonthesEnum } from "../../../../types/enum";
 
 interface IContributionGraphHead {
     sortedMonthes: number[]

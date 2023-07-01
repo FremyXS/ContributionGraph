@@ -1,9 +1,9 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import './ContributionGraphElement.scss';
 import { convertDate } from "../../../../commons/convert-date";
 
-enum ContributionGraphElementLevelsEnum{
+enum ContributionGraphElementLevelsEnum {
     one = 'one',
     two = 'two',
     three = 'three',
@@ -18,31 +18,45 @@ interface IContributionGraphElement {
     }
 }
 
-function ContributionGraphElement({data}: IContributionGraphElement) {
-    const elementRef = useRef(null);
+function ContributionGraphElement({ data }: IContributionGraphElement) {
+    const elementRef = useRef<HTMLButtonElement>(null);
     const [isShowInfo, setIsShowInfo] = useState<boolean>(false);
 
     const handleClick = () => {
         setIsShowInfo(!isShowInfo);
-      };
+    };
+
+    useEffect(() => {
+        const handleOutsideClick = (event: MouseEvent) => {
+            if (elementRef.current && !elementRef.current.contains(event.target as Node)) {
+                setIsShowInfo(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleOutsideClick);
+
+        return () => {
+            document.removeEventListener('mousedown', handleOutsideClick);
+        };
+    }, []);
 
     const onGetElementLevel = () => {
-        if(data.score === 0){
+        if (data.score === 0) {
             return ContributionGraphElementLevelsEnum.one;
         }
 
-        if(data.score <= 9){
+        if (data.score <= 9) {
             return ContributionGraphElementLevelsEnum.two;
         }
 
-        if(data.score <= 19){
+        if (data.score <= 19) {
             return ContributionGraphElementLevelsEnum.three;
         }
 
-        if(data.score <= 29){
+        if (data.score <= 29) {
             return ContributionGraphElementLevelsEnum.foure;
         }
-        
+
         return ContributionGraphElementLevelsEnum.five;
     }
 
