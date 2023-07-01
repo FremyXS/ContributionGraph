@@ -2,10 +2,10 @@
     position: relative;
 
     button {
-        width: 20px;
-        height: 20px;
+        width: 15px;
+        height: 15px;
         background-color: #aeaeae;
-        margin: 1px;
+        // margin: 1px;
         outline: none;
         border: none;
     }
@@ -48,7 +48,7 @@
 
     &__info {
         position: absolute;
-        bottom: 30px;
+        bottom: 23px;
         right: calc(50% - 50px);
 
         color: #fff;
@@ -60,16 +60,29 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+
+        &::before{
+            content: '';
+            display: block;
+            position: absolute;
+            height: 8px;
+            width: 8px;
+            background-color: black;
+            transform: rotate(45deg);
+            bottom: -4px;
+        }
     }
 
     &__contributions {
         font-weight: 400;
-        font-size: 16px;
+        font-size: 12px;
+        white-space: nowrap;
     }
 
     &__date {
         font-weight: 400;
-        font-size: 14px;
+        font-size: 10px;
         color: #7C7C7C;
+        white-space: nowrap;
     }
 }

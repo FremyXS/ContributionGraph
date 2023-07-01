@@ -1,5 +1,13 @@
 .contribution-graph{
-    
+
+    td{
+        font-size: 12px;
+    }
+
+    tr{
+        border-spacing: 0px;
+    }
+
     &-legend{
         display: flex;
         column-gap: 5px;
