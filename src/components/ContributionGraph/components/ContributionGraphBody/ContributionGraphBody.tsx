@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import ContributionGraphElement from "../ContributionGraphElement/ContributionGraphElement";
 import { WeekDaysEnum } from "../../../../types/enum";
 
@@ -46,6 +46,7 @@ function ContributionGraphBody({ sortedWeekdays, data, currentDate, minDate }: I
                 }
                 else{
                     dates.push(tem);
+                    
                 }
             }
         }

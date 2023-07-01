@@ -1,0 +1,29 @@
+.contribution-graph{
+    
+    &-legend{
+        display: flex;
+        column-gap: 5px;
+        margin-top: 15px;
+
+        & >section {
+            width: 20px;
+            height: 20px;
+
+            &:nth-child(2){
+                background-color: #aeaeae;
+            }
+            &:nth-child(3){
+                background-color: #ACD5F2;
+            }
+            &:nth-child(4){
+                background-color: #7FA8C9;
+            }
+            &:nth-child(5){
+                background-color: #527BA0;
+            }
+            &:nth-child(6){
+                background-color: #254E77;
+            }
+        }
+    }
+}

@@ -70,7 +70,13 @@ function ContributionGraph({ data }: IContributionGraph) {
                 <ContributionGraphBody sortedWeekdays={sortedWeekdays} data={data} currentDate={currentDate} minDate={() => getMinDate()}/>
             </table>
             <div className='contribution-graph-legend'>
-
+                <span>Меньше</span>
+                <section></section>
+                <section></section>
+                <section></section>
+                <section></section>
+                <section></section>
+                <span>Больше</span>
             </div>
         </div>
     );
