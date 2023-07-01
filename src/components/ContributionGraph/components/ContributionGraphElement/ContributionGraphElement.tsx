@@ -2,14 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 
 import './ContributionGraphElement.scss';
 import { convertDate } from "../../../../commons/convert-date";
-
-enum ContributionGraphElementLevelsEnum {
-    one = 'one',
-    two = 'two',
-    three = 'three',
-    foure = 'foure',
-    five = 'five'
-}
+import { ContributionGraphElementLevelsEnum } from "./types/enum";
 
 interface IContributionGraphElement {
     data: {

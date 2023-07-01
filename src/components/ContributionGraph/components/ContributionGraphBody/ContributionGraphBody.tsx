@@ -1,6 +1,7 @@
 import React from "react";
 import ContributionGraphElement from "../ContributionGraphElement/ContributionGraphElement";
 import { WeekDaysEnum } from "../../../../types/enum";
+import { getDatesByWeekday } from "../../../../commons/getDatesByWeekday";
 
 interface IContributionGraphBody {
     sortedWeekdays: number[],
@@ -14,44 +15,10 @@ interface IContributionGraphBody {
 
 function ContributionGraphBody({ sortedWeekdays, data, currentDate, minDate }: IContributionGraphBody) {
     const onGetDatesByWeekday = (weekDay: number, num: number) => {
-
-        const compareDates = (firstDate: Date, secondDate: Date) => {
-            if (firstDate.getFullYear() != secondDate.getFullYear()
-                || firstDate.getMonth() != secondDate.getMonth()
-                || firstDate.getDate() != secondDate.getDate()) {
-                return false;
-            }
-
-            return true;
-        }
-
-
         const currentDates = data.filter((el) => el.date.getDay() === weekDay);
-
         const startDate = minDate(num);
         const endDate = currentDate;
-
-        const dates = [];
-
-        for (let date = startDate!; date <= endDate; date.setDate(date.getDate() + 1)) {
-            const tem = currentDates.find((el) => compareDates(el.date, date));
-
-            if (date.getDay() === weekDay) {
-                if (!tem) {
-                    const emptyDate: { date: Date; score: number; } = {
-                        date: new Date(date),
-                        score: 0
-                    }
-                    dates.push(emptyDate);
-                }
-                else {
-                    dates.push(tem);
-
-                }
-            }
-        }
-
-        return dates;
+        return getDatesByWeekday(currentDates, startDate, endDate, weekDay);
     }
 
     return (
@@ -59,7 +26,7 @@ function ContributionGraphBody({ sortedWeekdays, data, currentDate, minDate }: I
             {sortedWeekdays.map((weekDay, index) =>
                 <tr key={`tr-body-index-${index}`}>
                     <td>
-                        <span style={{display: [0, 2, 4].includes(weekDay)? 'inline': 'none'}}>
+                        <span style={{ display: [0, 2, 4].includes(weekDay) ? 'inline' : 'none' }}>
                             {WeekDaysEnum[weekDay]}
                         </span>
                     </td>
