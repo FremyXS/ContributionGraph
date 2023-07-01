@@ -43,22 +43,22 @@ function ContributionGraph({ data }: IContributionGraph) {
                 <span>Меньше</span>
                 <ContributionGraphElement data={{ score: 0 }}>
                     <div className="contribution-graph-element__contributions">
-                        <span>0 contributions</span>
+                        <span>No contributions</span>
                     </div>
                 </ContributionGraphElement>
                 <ContributionGraphElement data={{ score: 9 }}>
                     <div className="contribution-graph-element__contributions">
-                        <span>1+ contributions</span>
+                        <span>1-9 contributions</span>
                     </div>
                 </ContributionGraphElement>
                 <ContributionGraphElement data={{ score: 19 }}>
                     <div className="contribution-graph-element__contributions">
-                        <span>10+ contributions</span>
+                        <span>10-19 contributions</span>
                     </div>
                 </ContributionGraphElement>
                 <ContributionGraphElement data={{ score: 29 }}>
                     <div className="contribution-graph-element__contributions">
-                        <span>20+ contributions</span>
+                        <span>20-29 contributions</span>
                     </div>
                 </ContributionGraphElement>
                 <ContributionGraphElement data={{ score: 39 }}>

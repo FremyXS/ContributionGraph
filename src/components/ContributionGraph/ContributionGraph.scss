@@ -16,7 +16,7 @@
         margin-top: 15px;
         align-items: center;
 
-        span {
+        & > span {
             font-size: 10px;
 
             &:first-child{

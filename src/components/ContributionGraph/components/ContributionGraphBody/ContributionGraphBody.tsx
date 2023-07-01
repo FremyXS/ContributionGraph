@@ -35,7 +35,7 @@ function ContributionGraphBody({ sortedWeekdays, data, currentDate, minDate }: I
                         <td key={`td-body-index-${index}-${index2}`}>
                             <ContributionGraphElement data={el}>
                                 <div className="contribution-graph-element__contributions">
-                                    <span>{`${el.score} contributions`}</span>
+                                    <span>{`${el.score > 0? el.score : 'No'} contributions`}</span>
                                 </div>
                                 <div className="contribution-graph-element__date">
                                     {`${convertDate(el.date)}`}
