@@ -5,6 +5,7 @@ import ContributionGraphBody from './components/ContributionGraphBody/Contributi
 
 import './ContributionGraph.scss';
 import { getSortedMonthes, getSortedWeekDays } from '../../commons/sortings';
+import ContributionGraphElement from './components/ContributionGraphElement/ContributionGraphElement';
 
 interface IContributionGraph {
     data: {
@@ -36,15 +37,35 @@ function ContributionGraph({ data }: IContributionGraph) {
         <div className='contribution-graph'>
             <table>
                 <ContributionGraphHead sortedMonthes={sortedMonthes} />
-                <ContributionGraphBody sortedWeekdays={sortedWeekdays} data={data} currentDate={currentDate} minDate={(num?: number) => getMinDate(num)}/>
+                <ContributionGraphBody sortedWeekdays={sortedWeekdays} data={data} currentDate={currentDate} minDate={(num?: number) => getMinDate(num)} />
             </table>
             <div className='contribution-graph-legend'>
                 <span>Меньше</span>
-                <section></section>
-                <section></section>
-                <section></section>
-                <section></section>
-                <section></section>
+                <ContributionGraphElement data={{ score: 0 }}>
+                    <div className="contribution-graph-element__contributions">
+                        <span>0 contributions</span>
+                    </div>
+                </ContributionGraphElement>
+                <ContributionGraphElement data={{ score: 9 }}>
+                    <div className="contribution-graph-element__contributions">
+                        <span>1+ contributions</span>
+                    </div>
+                </ContributionGraphElement>
+                <ContributionGraphElement data={{ score: 19 }}>
+                    <div className="contribution-graph-element__contributions">
+                        <span>10+ contributions</span>
+                    </div>
+                </ContributionGraphElement>
+                <ContributionGraphElement data={{ score: 29 }}>
+                    <div className="contribution-graph-element__contributions">
+                        <span>20+ contributions</span>
+                    </div>
+                </ContributionGraphElement>
+                <ContributionGraphElement data={{ score: 39 }}>
+                    <div className="contribution-graph-element__contributions">
+                        <span>30+ contributions</span>
+                    </div>
+                </ContributionGraphElement>
                 <span>Больше</span>
             </div>
         </div>

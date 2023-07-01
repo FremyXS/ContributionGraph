@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { ReactNode, useEffect, useRef, useState } from "react";
 
 import './ContributionGraphElement.scss';
 import { convertDate } from "../../../../commons/convert-date";
@@ -6,12 +6,13 @@ import { ContributionGraphElementLevelsEnum } from "./types/enum";
 
 interface IContributionGraphElement {
     data: {
-        date: Date,
+        date?: Date,
         score: number,
-    }
+    },
+    children: ReactNode
 }
 
-function ContributionGraphElement({ data }: IContributionGraphElement) {
+function ContributionGraphElement({ data, children }: IContributionGraphElement) {
     const elementRef = useRef<HTMLButtonElement>(null);
     const [isShowInfo, setIsShowInfo] = useState<boolean>(false);
 
@@ -58,12 +59,13 @@ function ContributionGraphElement({ data }: IContributionGraphElement) {
             <button ref={elementRef} onClick={handleClick}></button>
             {isShowInfo &&
                 <div className="contribution-graph-element__info">
-                    <div className="contribution-graph-element__contributions">
+                    {/* <div className="contribution-graph-element__contributions">
                         <span>{`${data.score} contributions`}</span>
                     </div>
                     <div className="contribution-graph-element__date">
-                        {`${convertDate(data.date)}`}
-                    </div>
+                        {`${convertDate(data.date)}`}                        
+                    </div> */}
+                    {children}
                 </div>
             }
         </div>
