@@ -40,24 +40,30 @@ function ContributionGraph({ data }: IContributionGraph) {
     const [sortedMonthes, setSortedMonthes] = useState<number[]>([]);
     const [sortedWeekdays, setSortedWeekdays] = useState<number[]>([]);
 
-    useEffect(()=>{
+    useEffect(() => {
         sortMonthes();
     }, []);
 
-    useEffect(()=>{
+    useEffect(() => {
         sortWeekdays();
     }, []);
+
+    const getMinDate = () => {
+        const fiftyWeeksAgo = new Date(currentDate);
+        fiftyWeeksAgo.setDate(fiftyWeeksAgo.getDate() - (49 * 7) + 3);
+        return fiftyWeeksAgo;
+    }
 
     const sortWeekdays = () => {
         const currentDay = currentDate.getDay();
 
         const days = [];
 
-        for(let day = currentDay + 1; day <= 7; day++){
+        for (let day = currentDay + 1; day <= 7; day++) {
             days.push(day);
         }
 
-        for(let day = 1; day <= currentDay; day++){
+        for (let day = 1; day <= currentDay; day++) {
             days.push(day);
         }
 
@@ -68,11 +74,11 @@ function ContributionGraph({ data }: IContributionGraph) {
         const currentMonth = currentDate.getMonth() + 1;
 
         const monthes = [];
-        for(let month = currentMonth + 1; month <= 12; month++){
+        for (let month = currentMonth + 1; month <= 12; month++) {
             monthes.push(month);
         }
 
-        for(let month = 1; month <= currentMonth; month++){
+        for (let month = 1; month <= currentMonth; month++) {
             monthes.push(month);
         }
 
@@ -82,10 +88,12 @@ function ContributionGraph({ data }: IContributionGraph) {
     return (
         <div className='contribution-graph'>
             <table>
-
                 <ContributionGraphHead sortedMonthes={sortedMonthes} />
-                <ContributionGraphBody sortedWeekdays={sortedWeekdays} data={data} />
+                <ContributionGraphBody sortedWeekdays={sortedWeekdays} data={data} currentDate={currentDate} minDate={() => getMinDate()}/>
             </table>
+            <div className='contribution-graph-legend'>
+
+            </div>
         </div>
     );
 }

@@ -2,8 +2,10 @@
     width: 20px;
     height: 20px;
     background-color: #aeaeae;
+    margin: 1px;
 
     &:hover, &:active{
+        margin: 0;
         border: 1px solid black;
     }
 

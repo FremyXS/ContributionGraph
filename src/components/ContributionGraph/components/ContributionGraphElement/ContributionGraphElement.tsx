@@ -24,15 +24,15 @@ function ContributionGraphElement({data}: IContributionGraphElement) {
             return ContributionGraphElementLevelsEnum.one;
         }
 
-        if(data.score <= 10){
+        if(data.score <= 9){
             return ContributionGraphElementLevelsEnum.two;
         }
 
-        if(data.score <= 20){
+        if(data.score <= 19){
             return ContributionGraphElementLevelsEnum.three;
         }
 
-        if(data.score <= 30){
+        if(data.score <= 29){
             return ContributionGraphElementLevelsEnum.foure;
         }
         
